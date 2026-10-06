@@ -1,0 +1,90 @@
+# ===== TuTienRPG config.yml =====  (/tuluyen reload de nap lai)
+
+resource-pack:
+  # De trong neu ban da dat resource pack trong server.properties (khi do plugin coi nhu ai cung co pack)
+  url: ""
+  sha1: ""
+  force: true
+  prompt: "<gold>Tai Resource Pack Tu Tien de hien thi thanh HP!"
+
+damage-output:
+  # He so sat thuong dau ra cua nguoi choi = HP RPG muc tieu / 20 * factor (toi thieu 1).
+  # factor 0.2 ~ cung canh gioi danh nhau khoang 14 don can ban de ha guc (don 7 sat thuong).
+  factor: 0.2
+  base-hit: 7.0          # "1 don" dung de quy doi sat thuong vo ky
+  apply-to-mobs: true    # nhan he so voi ca quai/boss; dat false neu chi muon tang trong PvP
+
+hp:
+  # LUU Y: can nang settings.attribute.maxHealth.max trong spigot.yml >= HP lon nhat
+  # HP goc theo Dai Canh Gioi (index 0 = Pham Nhan, 1..10 = Luyen Khi .. Dai De)
+  base: [100, 200, 500, 1500, 4000, 10000, 25000, 50000, 100000, 200000, 500000]
+  stage-bonus: 0.05        # moi tang nho +5% HP goc
+  damage-scale: 5.0        # sat thuong vanilla * he so nay = sat thuong HP RPG
+  regen-scale: 0.2         # hoi mau vanilla (1 don vi = 1/20 mau toi da) * he so nay
+  qi-to-hp: 1.0            # 1 linh khi du thua -> bao nhieu HP (khi HP 50%-98%)
+
+qi:
+  # Linh khi can de lap day dan dien (index = Dai Canh Gioi hien tai)
+  base: [100, 500, 2000, 8000, 30000, 100000, 300000, 800000, 2000000, 5000000, 10000000]
+  stage-growth: 0.15
+
+cultivation:
+  cycle-ticks: 200         # 1 chu thien = 10s
+  density-to-qi: 0.05      # mat do linh khi * he so = tran hap thu theo moi truong moi chu thien
+  min-mastery-factor: 0.2  # hap thu toi thieu (ty le tran cong phap) khi thong thao 0%
+  mastery-per-cycle: 1
+  heart-demon-chance: 0.03 # ty le tam ma xuat hien ngau nhien moi chu thien (Luyen Khi tro len)
+
+density:
+  default-base: 30000
+  world-base:
+    world: 30000
+    world_nether: 60000
+    world_the_end: 90000
+  mist-threshold: 30000
+
+heart-demon:
+  time-seconds: 30
+  illusion-health: 12.0
+  illusion-damage-pct: 0.02   # % HP toi da moi don danh
+  fail-qi-loss: 0.25
+
+lightning:
+  interval-ticks: 160         # khoang cach giua 2 dao loi kiep (du thoi gian dung dan duoc)
+  damage-pct: 0.22            # % HP toi da moi dao (+1% moi Dai Canh Gioi dich)
+  fail-qi-loss: 0.5
+
+cauldron:
+  idle-ticks: 60              # ngung nem nguyen lieu bao lau thi bat dau luyen
+  explosion:
+    base-percent: 1.0         # 1 vien = 1%
+    growth: 1.15              # ty le = base * so_vien ^ growth
+    max-percent: 95.0
+    radius: 5.0
+    damage-pct: 0.15          # sat thuong chuan = % HP toi da (+2% moi vien)
+
+dash:
+  enabled: false   # true = bat ky nang luot. Neu thay khung/giat khi combat thi de false
+  distance: 3      # so block luot (1-6), dung van toc that nen muot, khong teleport
+  cooldown-ms: 1500
+  # SPRINT  = Ctrl + W/A/S/D (vanilla client)
+  # CHANNEL = phim do client mod gui qua plugin channel "tutien:dash" (vd Tab) - xem README
+  # BOTH    = ca hai
+  keybind: SPRINT
+
+skills:
+  cast-cooldown-ms-min: 500
+
+techniques:
+  hap_tinh_phap:
+    cap: 150
+    max-mastery: 100
+  quy_nguyen_quyet:
+    cap: 500
+    max-mastery: 300
+  phe_loi_than_cong:
+    cap: 1500
+    max-mastery: 800
+  hon_don_thon_thien_kinh:
+    cap: 5000
+    max-mastery: 2000

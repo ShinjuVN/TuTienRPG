@@ -1,0 +1,21 @@
+name: TuTienRPG
+main: dev.tutien.TuTienPlugin
+version: '${version}'
+api-version: '1.21'
+description: Custom Cultivation (Tu Tien) RPG
+commands:
+  guidebook:
+    description: Nhan sach huong dan tu tien
+    usage: /guidebook
+    permission: tutien.guidebook
+  tuluyen:
+    description: Quan ly he thong tu tien (Admin)
+    usage: /tuluyen <give|reload|user>
+    permission: tutiendeveloper.admin
+permissions:
+  tutiendeveloper.admin:
+    description: Dung nhom lenh /tuluyen
+    default: op
+  tutien.guidebook:
+    description: Dung /guidebook
+    default: true
